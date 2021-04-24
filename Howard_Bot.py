@@ -3,6 +3,7 @@
 # Token ODI5MDg2NjUxMzc5ODc1ODg5.YGzBHQ.fbimYqbXqV3X5NWUIAQGLLOuKxw
 # perms int 75840
 # https://discordapp.com/oauth2/authorize?client_id=829086651379875889&scope=bot&permissions=75840
+
 from discord.ext import commands
 import random
 import discord
@@ -29,33 +30,22 @@ async def on_message(message):
         await message.channel.send("bye!!")
         await client.close()
 
-    if str(message.author) == "" and "" in message.content.lower():
-        await message.channel.send('')
+    if str(message.author) == "Young_Howard#5726" and "" in message.content.lower():
+        await message.channel.send('Hi howard!')
 
-    if message.content.startswith("_play"): #the play command to start the guessing game.
+    if message.content.startswith("_play"): 
         channel = message.channel
-        await channel.send("Choose a number between 1-2. Enter numerical values only.") #message that tells about the start of the game
+        await channel.send("Choose a number between 1-2. Enter numerical values only.") 
 
- 
-
-        # generates a random number and turns it into a string
     number1 = random.randint(1,2)        
     number2 = str(number1)
 
 
     def check(m):
         return m.content == number2 and m.channel == channel 
-        """
-          The check function, first it checks if the message is the correct number.
-          Then it checks if the channel is the same channel as the channel that the play command was sent in.
-          If both is true, then it returns true. Else it returns false.
-        """
         
-    msg = await client.wait_for('message', check=check) #waits for the check function to return true
-    await channel.send("Correct answer {.author}" .format(msg)) #sends the correct answer message
+    msg = await client.wait_for('message', check=check) 
+    await channel.send("Correct answer {.author}" .format(msg)) 
 
 
 client.run("ODI5MDg2NjUxMzc5ODc1ODg5.YGzBHQ.fbimYqbXqV3X5NWUIAQGLLOuKxw")
-
-
-
